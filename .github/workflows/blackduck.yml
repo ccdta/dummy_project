@@ -14,7 +14,7 @@ jobs:
       BLACKDUCK_URL: https://3.13.1.115
       BLACKDUCK_API_TOKEN: ZTk0NjI2YzYtOTkxMC00MGJkLWIzNmQtODFiYmQ5N2IyOTdhOjViYWE2Yzc5LTBjMmYtNGQ5Zi1iNWY1LTg3OWUyN2ZkOGZjZA==
       PROJECT: dummy_project
-      BRANCH: 6af82d4b8c73e4464fbe5ae89233aaf0f89d710a
+      BRANCH: main
 
     steps:
     - uses: actions/checkout@v2
