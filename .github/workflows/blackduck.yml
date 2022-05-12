@@ -1,0 +1,27 @@
+# Black Duck on GitHub-hosted ephemeral runner
+name: blackduck
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  blackduck:
+    runs-on: ubuntu-latest
+
+    env:
+      BLACKDUCK_URL: https://3.13.1.115
+      BLACKDUCK_API_TOKEN: ZTk0NjI2YzYtOTkxMC00MGJkLWIzNmQtODFiYmQ5N2IyOTdhOjViYWE2Yzc5LTBjMmYtNGQ5Zi1iNWY1LTg3OWUyN2ZkOGZjZA==
+      PROJECT: dummy_project
+      BRANCH: 6af82d4b8c73e4464fbe5ae89233aaf0f89d710a
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-java@v1
+      with:
+        java-version: 11
+    - name: Black Duck Scan
+      uses: blackducksoftware/github-action@v2
+      with:
+        args: --detect.project.name=$PROJECT --detect.project.version.name=$BRANCH --detect.excluded.detector.types=GRADLE --blackduck.trust.cert=true
