@@ -74,4 +74,5 @@ jobs:
         #   blackduck-url: $BLACKDUCK_URL
         #   blackduck-api-token: $BLACKDUCK_API_TOKEN
         uses: blackducksoftware/github-action@v2
+        with:
           args: --detect.excluded.detector.types=GRADLE --blackduck.trust.cert=true --detect.project.user.groups=$USER_GROUP
