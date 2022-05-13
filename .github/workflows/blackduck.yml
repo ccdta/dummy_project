@@ -16,7 +16,7 @@ jobs:
       PROJECT: ccdta/dummy_project
       BRANCH: main5
       USER_GROUP: studio_a_users
-      TAGS: apac, a_game
+      TAGS: apac,a_game
 
     steps:
     - uses: actions/checkout@v2
