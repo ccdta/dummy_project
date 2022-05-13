@@ -64,6 +64,7 @@ jobs:
         uses: synopsys-sig/detect-action@main
         env:
           DETECT_PROJECT_USER_GROUPS: $USER_GROUP
+          DETECT_EXCLUDED_DETECTOR_TYPES: GRADLE
           BLACKDUCK_TRUST_CERT: TRUE
         # You can use this option to configure a CA cert if using a self-hosted runner and self-signed
         # certificates on your Hub server. This option should point to a file on the local filesystem
