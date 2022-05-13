@@ -15,6 +15,8 @@ jobs:
       BLACKDUCK_API_TOKEN: ZTk0NjI2YzYtOTkxMC00MGJkLWIzNmQtODFiYmQ5N2IyOTdhOjViYWE2Yzc5LTBjMmYtNGQ5Zi1iNWY1LTg3OWUyN2ZkOGZjZA==
       PROJECT: ccdta/dummy_project
       BRANCH: main4
+      USER_GROUP: studio_a
+      TAGS: apac, a_game
 
     steps:
     - uses: actions/checkout@v2
@@ -24,4 +26,4 @@ jobs:
     - name: Black Duck Scan
       uses: blackducksoftware/github-action@v2
       with:
-        args: --detect.project.name=$PROJECT --detect.project.version.name=$BRANCH --detect.excluded.detector.types=GRADLE --blackduck.trust.cert=true 
+        args: --detect.project.name=$PROJECT --detect.project.version.name=$BRANCH --detect.excluded.detector.types=GRADLE --blackduck.trust.cert=true --detect.project.user.groups=$USER_GROUP --detect.project.tags=$TAGS
