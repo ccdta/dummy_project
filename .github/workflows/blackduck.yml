@@ -15,7 +15,7 @@ jobs:
       BLACKDUCK_API_TOKEN: ZTk0NjI2YzYtOTkxMC00MGJkLWIzNmQtODFiYmQ5N2IyOTdhOjViYWE2Yzc5LTBjMmYtNGQ5Zi1iNWY1LTg3OWUyN2ZkOGZjZA==
       PROJECT: ccdta/dummy_project
       BRANCH: main4
-      USER_GROUP: studio_a
+      USER_GROUP: studio_a_users
       TAGS: apac, a_game
 
     steps:
