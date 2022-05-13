@@ -25,4 +25,4 @@ jobs:
     - name: Black Duck Scan
       uses: blackducksoftware/github-action@v2
       with:
-        args: --detect.parent.project.name=$PROJECT_GROUP --detect.project.name=$PROJECT --detect.project.version.name=$BRANCH --detect.excluded.detector.types=GRADLE --blackduck.trust.cert=true 
+        args: --detect.parent.project.name=$PROJECT_GROUP --detect.parent.project.version.name=$BRANCH --detect.project.name=$PROJECT --detect.project.version.name=$BRANCH --detect.excluded.detector.types=GRADLE --blackduck.trust.cert=true 
