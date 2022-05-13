@@ -14,7 +14,7 @@ jobs:
       BLACKDUCK_URL: https://3.13.1.115
       BLACKDUCK_API_TOKEN: ZTk0NjI2YzYtOTkxMC00MGJkLWIzNmQtODFiYmQ5N2IyOTdhOjViYWE2Yzc5LTBjMmYtNGQ5Zi1iNWY1LTg3OWUyN2ZkOGZjZA==
       PROJECT: ccdta/dummy_project
-      BRANCH: main4
+      BRANCH: main5
       USER_GROUP: studio_a_users
       TAGS: apac, a_game
 
