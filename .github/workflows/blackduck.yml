@@ -13,8 +13,8 @@ jobs:
     env:
       BLACKDUCK_URL: https://3.13.1.115
       BLACKDUCK_API_TOKEN: ZTk0NjI2YzYtOTkxMC00MGJkLWIzNmQtODFiYmQ5N2IyOTdhOjViYWE2Yzc5LTBjMmYtNGQ5Zi1iNWY1LTg3OWUyN2ZkOGZjZA==
-      PROJECT: dummy_project
-      BRANCH: main2
+      PROJECT: ccdta/dummy_project
+      BRANCH: main
 
     steps:
     - uses: actions/checkout@v2
@@ -24,4 +24,4 @@ jobs:
     - name: Black Duck Scan
       uses: blackducksoftware/github-action@v2
       with:
-        args: --detect.project.name=$PROJECT --detect.project.user.groups=studio_a_users --detect.project.version.name=$BRANCH --detect.excluded.detector.types=GRADLE --blackduck.trust.cert=true
+        args: --detect.project.name=$PROJECT --detect.parent.project.name=studio_a --detect.project.version.name=$BRANCH --detect.excluded.detector.types=GRADLE --blackduck.trust.cert=true 
