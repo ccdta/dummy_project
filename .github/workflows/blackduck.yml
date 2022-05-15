@@ -55,14 +55,14 @@ jobs:
         #  NODE_EXTRA_CA_CERTS: ${{ secrets.LOCAL_CA_CERT_PATH }}
         with:
             scan-mode: RAPID
-            github-token: ${{ secrets.GITHUB_TOKEN }}
+#             github-token: ${{ secrets.GITHUB_TOKEN }}
             detect-version: 7.12.0
             blackduck-url: ${{ secrets.BLACKDUCK_URL }}
             blackduck-api-token: ${{ secrets.BLACKDUCK_API_TOKEN }}
 
       - name: Black Duck (Full scan)
         if: ${{ github.event_name != 'pull_request' }}
-        # uses: synopsys-sig/detect-action@main
+        uses: synopsys-sig/detect-action@main
         env:
           DETECT_PROJECT_USER_GROUPS: $USER_GROUP
           DETECT_EXCLUDED_DETECTOR_TYPES: GRADLE
@@ -72,12 +72,12 @@ jobs:
         # with the CA chain cert
         #env:
         #  NODE_EXTRA_CA_CERTS: ${{ secrets.LOCAL_CA_CERT_PATH }}
-        # with:
-        #   scan-mode: RAPID
-        #   github-token: ${{ secrets.GITHUB_TOKEN }}
-        #   detect-version: 7.12.0
-        #   blackduck-url: ${{ secrets.BLACKDUCK_URL }}
-        #   blackduck-api-token: ${{ secrets.BLACKDUCK_API_TOKEN }}
-        uses: blackducksoftware/github-action@v2
         with:
-          args: --detect.excluded.detector.types=GRADLE --blackduck.trust.cert=true --detect.project.user.groups=$USER_GROUP
+          scan-mode: RAPID
+#           github-token: ${{ secrets.GITHUB_TOKEN }}
+          detect-version: 7.12.0
+          blackduck-url: ${{ secrets.BLACKDUCK_URL }}
+          blackduck-api-token: ${{ secrets.BLACKDUCK_API_TOKEN }}
+#         uses: blackducksoftware/github-action@v2
+#         with:
+#           args: --detect.excluded.detector.types=GRADLE --blackduck.trust.cert=true --detect.project.user.groups=$USER_GROUP
