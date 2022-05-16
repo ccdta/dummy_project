@@ -16,11 +16,6 @@ jobs:
     # The type of runner that the job will run on - Black Duck can also run on Windows and macOS
     runs-on: ubuntu-latest
 
-#     env:
-#       BLACKDUCK_URL: ${{ secrets.BLACKDUCK_URL }}
-#       BLACKDUCK_API_TOKEN: ${{ secrets.BLACKDUCK_API_TOKEN }}
-#       USER_GROUP: studio_a_users
-      
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -47,7 +42,6 @@ jobs:
         # and search for COMPARE_MODE for more details.
         env:
           DETECT_BLACKDUCK_RAPID_COMPARE_MODE: BOM_COMPARE_STRICT
-          DETECT_TRUST_CERT: TRUE
         # You can use this option to configure a CA cert if using a self-hosted runner and self-signed
         # certificates on your Hub server. This option should point to a file on the local filesystem
         # with the CA chain cert
@@ -55,30 +49,22 @@ jobs:
         #  NODE_EXTRA_CA_CERTS: ${{ secrets.LOCAL_CA_CERT_PATH }}
         with:
             scan-mode: RAPID
-            detect-trust-cert: true
             github-token: ${{ secrets.GITHUB_TOKEN }}
-            detect-version: 7.12.0
+            detect-version: 7.11.0
             blackduck-url: ${{ secrets.BLACKDUCK_URL }}
             blackduck-api-token: ${{ secrets.BLACKDUCK_API_TOKEN }}
 
       - name: Black Duck (Full scan)
-        if: ${{ github.event_name != 'pull_request' }}
+        if: ${{ github.event_name == 'pull_request' }}
         uses: synopsys-sig/detect-action@main
-        env:
-          DETECT_PROJECT_USER_GROUPS: studio_a_users
-          DETECT_EXCLUDED_DETECTOR_TYPES: GRADLE
         # You can use this option to configure a CA cert if using a self-hosted runner and self-signed
         # certificates on your Hub server. This option should point to a file on the local filesystem
         # with the CA chain cert
         #env:
         #  NODE_EXTRA_CA_CERTS: ${{ secrets.LOCAL_CA_CERT_PATH }}
         with:
-          scan-mode: INTELLIGENT
+          scan-mode: RAPID
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          detect-version: 7.12.0
-          detect-trust-cert: true
+          detect-version: 7.11.0
           blackduck-url: ${{ secrets.BLACKDUCK_URL }}
           blackduck-api-token: ${{ secrets.BLACKDUCK_API_TOKEN }}
-#         uses: blackducksoftware/github-action@v2
-#         with:
-#           args: --detect.excluded.detector.types=GRADLE --blackduck.trust.cert=true --detect.project.user.groups=$USER_GROUP
