@@ -58,7 +58,7 @@ jobs:
             detect-version: 7.12.0
             blackduck-url: ${{ secrets.BLACKDUCK_URL }}
             blackduck-api-token: ${{ secrets.BLACKDUCK_API_TOKEN }}
-            blackduck-trust-cert: true
+            detect-trust-cert: true
 
       - name: Black Duck (Full scan)
         if: ${{ github.event_name != 'pull_request' }}
@@ -66,7 +66,6 @@ jobs:
         env:
           DETECT_PROJECT_USER_GROUPS: studio_a_users
           DETECT_EXCLUDED_DETECTOR_TYPES: GRADLE
-          BLACKDUCK_TRUST_CERT: TRUE
         # You can use this option to configure a CA cert if using a self-hosted runner and self-signed
         # certificates on your Hub server. This option should point to a file on the local filesystem
         # with the CA chain cert
@@ -76,6 +75,7 @@ jobs:
           scan-mode: INTELLIGENT
           github-token: ${{ secrets.GITHUB_TOKEN }}
           detect-version: 7.12.0
+          detect-trust-cert: true
           blackduck-url: ${{ secrets.BLACKDUCK_URL }}
           blackduck-api-token: ${{ secrets.BLACKDUCK_API_TOKEN }}
 #         uses: blackducksoftware/github-action@v2
